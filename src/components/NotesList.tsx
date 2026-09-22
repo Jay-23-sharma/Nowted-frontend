@@ -2,7 +2,7 @@
 
 export function NoteList(){
     return(
-        <div className="noteList bg-[rgba(28,28,28,1)] w-xl overflow-auto">
+        <div className="noteList bg-[rgba(28,28,28,1)] w-[20%] overflow-auto">
           <h1 className="text-white p-3 pb-6">Personal</h1>
 
           <div className="flex flex-col pl-3 pr-3 gap-6">

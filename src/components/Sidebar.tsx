@@ -4,7 +4,7 @@
 export function Sidebar(){
     return(
 
-        <div className="sidebar bg-[rgba(24,24,24,1)]  w-md flex flex-col gap-y-6 overflow-auto">
+        <div className="sidebar bg-[rgba(24,24,24,1)]  w-[20%] flex flex-col gap-y-6 overflow-auto">
           <div className="Logo flex justify-between pt-5">
             <img
               className="w-fit pl-3"
