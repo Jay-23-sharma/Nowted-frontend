@@ -8,35 +8,38 @@ export function NoteDetails() {
         <div className="heading text-white text-3xl flex justify-between p-5 pt-8">
           <h1>Reflecion of the Month June</h1>
           <div className="relative">
-            <img onClick={() => setMenu(!openMenu)} src="src/assets/more-logo.png" alt="more icon" />
+            <img
+              onClick={() => setMenu(!openMenu)}
+              src="src/assets/more-logo.png"
+              alt="more icon"
+            />
             {openMenu && (
-            <div className="absolute bg-[rgba(51,51,51,1)] right-1 top-13 rounded-lg">
-                <ul className=" h-30 w-45 rounded">
-                    <li className=" text-sm pl-3 pt-2 ">
-                        <a className="flex gap-3 " href="">
-                            <img src="src/assets/fav-logo.png" alt="fav icon" />
-                            <p>Add to Favourites</p>
-                        </a>
-                    </li>
+              <div className="absolute bg-[rgba(51,51,51,1)] right-1 top-13 rounded-lg">
+                <div className="list flex flex-col w-45 h-30  justify-center rounded-lg">
+                    <div className="addFav flex text-xs h-[33%] items-center pl-3 hover:bg-[rgba(255,255,255,0.05)]">
+                        <a className="flex gap-3 justify-center" href="">
+                      <img className="w-4 h-4 " src="src/assets/fav-logo.png" alt="fav icon" />
+                      <p >Add to Favourites</p>
+                    </a>
+                    </div>
 
-                    <li className=" text-sm pl-3 pt-3 pb-3 border-b border-[rgba(255,255,255,0.05)]">
-                        <a className="flex gap-3" href="">
-                            <img src="src/assets/archive-logo.png" alt="fav icon" />
-                            <p>Archive document</p>
-                        </a>
-                    </li>
+                    <div className="addArchive flex text-xs pl-3 h-[33%] items-center border-b border-[rgba(255,255,255,0.05)] pb-1 hover:bg-[rgba(255,255,255,0.05)]">
+                        <a className="flex gap-3 justify-center" href="">
+                      <img className="w-4 h-4 " src="src/assets/archive-logo.png" alt="fav icon" />
+                      <p >Archive Note</p>
+                    </a>
+                    </div>
 
-                    <li className=" text-sm pl-3 pt-3">
-                        <a className="flex gap-3" href="">
-                            <img src="src/assets/trash-logo.png" alt="fav icon" />
-                            <p>Move to trash</p>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-          )}
+                    <div className="addTrash flex text-xs pl-3 h-[34%] items-center hover:bg-[rgba(255,255,255,0.05)]">
+                        <a className="flex gap-3 justify-center" href="">
+                      <img className="w-4 h-4 " src="src/assets/trash-logo.png" alt="fav icon" />
+                      <p >Add to Trash</p>
+                    </a>
+                    </div>
+                </div>
+              </div>
+            )}
           </div>
-          
         </div>
 
         <div className="details text-white flex flex-col pl-5 gap-5 pr-5">
