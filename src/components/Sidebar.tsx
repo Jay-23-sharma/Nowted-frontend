@@ -1,3 +1,5 @@
+
+
 export function Sidebar() {
   return (
     <div className="sidebar bg-[rgba(24,24,24,1)]  w-[20%] flex flex-col gap-y-6 overflow-auto">
@@ -8,16 +10,18 @@ export function Sidebar() {
           alt="Nowted Logo"
         />
 
-        <img
-          className="w-fit pr-3"
-          src="src/assets/search-logo.png"
-          alt="Search icon"
-        />
+        <button>
+          <img
+            className="w-fit pr-3"
+            src="src/assets/search-logo.png"
+            alt="Search icon"
+          />
+        </button>
       </div>
 
       <div className="addNote h-10 w-full pl-3 pr-3">
-        <button className="addButton justify-center bg-[rgba(255,255,255,0.05)] w-full h-full flex text-white w-full items-center rounded-sm text-sm">
-          + New Note
+        <button className="addButton justify-center bg-[rgba(255,255,255,0.05)] w-full h-full flex text-white w-full items-center rounded-sm text-sm gap-1 hover:bg-[rgba(51,51,51,1)]">
+          <p className="text-2xl">+</p><p>New Note</p>
         </button>
       </div>
 
@@ -63,7 +67,7 @@ export function Sidebar() {
       <div className="folders">
         <div className="flex justify-between pb-3 pl-3 pr-3">
           <p className="text-gray-400 text-xs">Folders</p>
-          <img src="src/assets/addFolder-logo.png" alt="" />
+          <button><img src="src/assets/addFolder-logo.png" alt="" /></button>
         </div>
 
         <div className="folderList flex flex-col">
