@@ -14,28 +14,49 @@ export function NoteDetails() {
               alt="more icon"
             />
             {openMenu && (
-              <div className="absolute bg-[rgba(51,51,51,1)] right-1 top-13 rounded-lg">
+              <div className="absolute bg-[rgba(51,51,51,1)] right-1 top-10 rounded-lg">
                 <div className="list flex flex-col w-45 h-30  justify-center rounded-lg">
-                    <div className="addFav flex text-xs h-[33%] items-center pl-3 hover:bg-[rgba(255,255,255,0.05)]">
-                        <a className="flex gap-3 justify-center" href="">
-                      <img className="w-4 h-4 " src="src/assets/fav-logo.png" alt="fav icon" />
-                      <p >Add to Favourites</p>
-                    </a>
+                  <a
+                    className="flex h-[33%] items-center pl-3 hover:bg-[rgba(255,255,255,0.05)]"
+                    href=""
+                  >
+                    <div className="addFav flex text-xs  gap-3 justify-center">
+                      <img
+                        className="w-4 h-4 "
+                        src="src/assets/fav-logo.png"
+                        alt="fav icon"
+                      />
+                      <p>Add to favorites</p>
                     </div>
+                  </a>
 
-                    <div className="addArchive flex text-xs pl-3 h-[33%] items-center border-b border-[rgba(255,255,255,0.05)] pb-1 hover:bg-[rgba(255,255,255,0.05)]">
-                        <a className="flex gap-3 justify-center" href="">
-                      <img className="w-4 h-4 " src="src/assets/archive-logo.png" alt="fav icon" />
-                      <p >Archive Note</p>
-                    </a>
+                  <a
+                    className="flex h-[33%] items-center pl-3 hover:bg-[rgba(255,255,255,0.05)] border-b border-[rgba(255,255,255,0.05)]"
+                    href=""
+                  >
+                    <div className="addFav flex text-xs  gap-3 justify-center">
+                      <img
+                        className="w-4 h-4 "
+                        src="src/assets/archive-logo.png"
+                        alt="fav icon"
+                      />
+                      <p>Archived</p>
                     </div>
+                  </a>
 
-                    <div className="addTrash flex text-xs pl-3 h-[34%] items-center hover:bg-[rgba(255,255,255,0.05)]">
-                        <a className="flex gap-3 justify-center" href="">
-                      <img className="w-4 h-4 " src="src/assets/trash-logo.png" alt="fav icon" />
-                      <p >Add to Trash</p>
-                    </a>
+                  <a
+                    className="flex h-[33%] items-center pl-3 hover:bg-[rgba(255,255,255,0.05)]"
+                    href=""
+                  >
+                    <div className="addFav flex text-xs  gap-3 justify-center">
+                      <img
+                        className="w-4 h-4 "
+                        src="src/assets/trash-logo.png"
+                        alt="fav icon"
+                      />
+                      <p>Delete</p>
                     </div>
+                  </a>
                 </div>
               </div>
             )}
