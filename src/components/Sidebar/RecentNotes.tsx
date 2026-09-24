@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getRecentNotes } from "../services/noteAPI";
 import { NavLink } from "react-router-dom";
+import CurrFileLogo from "../../assets/currentFile-logo.png"
 
 
 export function RecentNotes() {
@@ -9,8 +10,6 @@ export function RecentNotes() {
     title: string;
   };
   const [notes, setNotes] = useState<Note[]>([]);
-  const [error, setError] = useState("");
-  const [isLoading, setLoading] = useState(false);
 
   useEffect(() => {
     async function fetchNotes() {
@@ -26,7 +25,7 @@ export function RecentNotes() {
   }, []);
 
   return (
-    <div className="sidebar bg-[rgba(24,24,24,1)]">
+    <div className="sidebar bg-[rgba(24,24,24,1)] pb-1">
       <div className="recents w-full">
         <p className="text-gray-400 text-xs pb-3 pl-3">Recents</p>
         <div className="recentList flex flex-col">
@@ -38,7 +37,7 @@ export function RecentNotes() {
               <NavLink to={`/notes/${note.id}`} className="flex gap-2 items-center">
                 <img
                   className="w-4 h-4 justify-center"
-                  src="src/assets/currentFile-logo.png"
+                  src={CurrFileLogo}
                   alt=""
                 />
                 <p className="text-white text-sm">{note.title}</p>

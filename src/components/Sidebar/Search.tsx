@@ -1,17 +1,20 @@
+import SearchIcon from "../../assets/search-logo.png"
+import Logo from "../../assets/Nowted-logo.png"
+
 export function Search(){
     return(
         <div className="sidebar bg-[rgba(24,24,24,1)]">
             <div className="Logo flex justify-between pt-5">
         <img
           className="w-fit pl-3"
-          src="src/assets/Nowted-logo.png"
+          src={Logo}
           alt="Nowted Logo"
         />
 
         <button>
           <img
             className="w-fit pr-3"
-            src="src/assets/search-logo.png"
+            src={SearchIcon}
             alt="Search icon"
           />
         </button>

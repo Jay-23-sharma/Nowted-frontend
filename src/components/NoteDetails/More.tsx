@@ -1,4 +1,8 @@
 import { useState } from "react";
+import MoreLogo from "../../assets/more-logo.png"
+import FavLogo from "../../assets/fav-logo.png"
+import ArchiveLogo from "../../assets/archive-logo.png"
+import TrashLogo from "../../assets/trash-logo.png"
 
 type NoteTitle ={
     title:string;
@@ -12,7 +16,7 @@ export function More({title}:NoteTitle){
           <div className="relative">
             <img
               onClick={() => setMenu(!openMenu)}
-              src="src/assets/more-logo.png"
+              src={MoreLogo}
               alt="more icon"
             />
             {openMenu && (
@@ -25,7 +29,7 @@ export function More({title}:NoteTitle){
                     <div className="addFav flex text-xs  gap-3 justify-center">
                       <img
                         className="w-4 h-4 "
-                        src="src/assets/fav-logo.png"
+                        src={FavLogo}
                         alt="fav icon"
                       />
                       <p>Add to favorites</p>
@@ -39,7 +43,7 @@ export function More({title}:NoteTitle){
                     <div className="addFav flex text-xs  gap-3 justify-center">
                       <img
                         className="w-4 h-4 "
-                        src="src/assets/archive-logo.png"
+                        src={ArchiveLogo}
                         alt="fav icon"
                       />
                       <p>Archived</p>
@@ -53,7 +57,7 @@ export function More({title}:NoteTitle){
                     <div className="addFav flex text-xs  gap-3 justify-center">
                       <img
                         className="w-4 h-4 "
-                        src="src/assets/trash-logo.png"
+                        src={TrashLogo}
                         alt="fav icon"
                       />
                       <p>Delete</p>

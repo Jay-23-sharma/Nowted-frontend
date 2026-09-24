@@ -1,3 +1,8 @@
+import FavLogo from "../../assets/fav-logo.png"
+import ArchiveLogo from "../../assets/archive-logo.png"
+import TrashLogo from "../../assets/trash-logo.png"
+
+
 export function Utility() {
   return (
     <div className="sidebar bg-[rgba(24,24,24,1)]">
@@ -10,7 +15,7 @@ export function Utility() {
               <a className="flex gap-2 items-center" href="">
                 <img
                   className="w-4 h-4 justify-center"
-                  src="src/assets/fav-logo.png"
+                  src={FavLogo}
                   alt=""
                 />
                 <p className="text-white text-sm">Favourites</p>
@@ -21,10 +26,10 @@ export function Utility() {
               <a className="flex gap-2 items-center" href="">
                 <img
                   className="w-4 h-4 justify-center"
-                  src="src/assets/trash-logo.png"
+                  src={ArchiveLogo}
                   alt=""
                 />
-                <p className="text-gray-400 text-sm">Trash</p>
+                <p className="text-gray-400 text-sm">Archived</p>
               </a>
             </div>
 
@@ -32,10 +37,10 @@ export function Utility() {
               <a className="flex gap-2 items-center" href="">
                 <img
                   className="w-4 h-4 justify-center"
-                  src="src/assets/archive-logo.png"
+                  src={TrashLogo}
                   alt=""
                 />
-                <p className="text-gray-400 text-sm">Travel Itinerary</p>
+                <p className="text-gray-400 text-sm">Trash</p>
               </a>
             </div>
           </div>

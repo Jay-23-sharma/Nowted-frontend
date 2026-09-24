@@ -1,58 +1,48 @@
+import CurrFoldersLogo from "../../assets/currentFolder-logo.png";
+import FoldersLogo from "../../assets/folder-logo.png";
+import AddFolder from "../../assets/addFolder-logo.png";
+import { useState, useEffect } from "react";
+import { getFolders } from "../services/noteAPI";
+import { NavLink } from "react-router-dom";
+
+type NoteFolder = {
+  name: string;
+  id: string;
+};
 export function Folders() {
+  const [folders, setFolder] = useState<NoteFolder[]>([]);
+
+  useEffect(() => {
+    async function fetchFolder() {
+      try {
+        const response = await getFolders();
+        setFolder(response.folders);
+      } catch (e) {
+        console.log(e);
+      }
+    }
+    fetchFolder();
+  }, []);
   return (
-    <div className="sidebar bg-[rgba(24,24,24,1)]">
-      <div className="folders">
-        <div className="flex justify-between pb-3 pl-3 pr-3">
-          <p className="text-gray-400 text-xs">Folders</p>
-          <button>
-            <img src="src/assets/addFolder-logo.png" alt="" />
-          </button>
-        </div>
-
-        <div className="folderList flex flex-col">
-          <div className="folder1 h-10 content-center  pl-3 bg-[rgba(255,255,255,0.03)]">
-            <a className="flex gap-3 items-center" href="">
-              <img
-                className="w-4 h-4 justify-center"
-                src="src/assets/currentFolder-logo.png"
-                alt=""
-              />
-              <p className="text-white text-sm">Personal</p>
-            </a>
-          </div>
-
-          <div className="folder1  pl-3 h-10 content-center">
-            <a className="flex gap-3 items-center" href="">
-              <img
-                className="w-4 h-4 justify-center"
-                src="src/assets/folder-logo.png"
-                alt=""
-              />
-              <p className="text-gray-400 text-sm">Work</p>
-            </a>
-          </div>
-
-          <div className="folder1  pl-3 h-8">
-            <a className="flex gap-3 items-center" href="">
-              <img
-                className="w-4 h-4 justify-center"
-                src="src/assets/folder-logo.png"
-                alt=""
-              />
-              <p className="text-gray-400 text-sm">Travel</p>
-            </a>
-          </div>
-
-          <div className="folder1  pl-3">
-            <a className="flex gap-3 items-center" href="">
-              <img
-                className="w-4 h-4 justify-center"
-                src="src/assets/folder-logo.png"
-                alt=""
-              />
-              <p className="text-gray-400 text-sm">Finances</p>
-            </a>
-          </div>
+    <div className="sidebar bg-[rgba(24,24,24,1)] overflow-auto h-[30%]">
+        
+      <div className="folders ">
+        <div className="folderList flex flex-col ">
+          {folders.map((folder) => (
+            <div
+              key={folder.id}
+              className="folder1 h-10 content-center  pl-3 hover:bg-[rgba(255,255,255,0.03)]"
+            >
+              <NavLink className="flex gap-3 items-center" to="">
+                <img
+                  className="w-4 h-4 justify-center"
+                  src={CurrFoldersLogo}
+                  alt="current folder logo"
+                />
+                <p className="text-white text-sm">{folder.name}</p>
+              </NavLink>
+            </div>
+          ))}
         </div>
       </div>
     </div>

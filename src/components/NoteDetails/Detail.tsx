@@ -1,3 +1,7 @@
+import DateLogo from "../../assets/calendar-logo.png"
+import CurrFolder from "../../assets/folder-logo.png"
+
+
 type DetailProps = {
     date:string;
     folder:string;
@@ -10,7 +14,7 @@ export function Detail({date,folder}:DetailProps){
             <div className="dateIcon flex gap-2 w-6 ">
               <img
                 className="h-4"
-                src="src/assets/calendar-logo.png"
+                src={DateLogo}
                 alt="calendar image"
               />
               <p className="text-xs text-[rgba(255,255,255,0.6)]">Date</p>
@@ -27,13 +31,13 @@ export function Detail({date,folder}:DetailProps){
             <div className="folderIcon flex gap-2 w-6 ">
               <img
                 className="h-4"
-                src="src/assets/folder-logo.png"
-                alt="calendar image"
+                src={CurrFolder}
+                alt="folder image"
               />
               <p className="text-xs text-[rgba(255,255,255,0.6)]">Folder</p>
             </div>
 
-            <div className="dateNumb">
+            <div className="folderInfo">
               <a className="underline">
                 <p className="text-xs">{folder}</p>
               </a>

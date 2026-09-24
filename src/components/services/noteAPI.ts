@@ -15,3 +15,10 @@ export async function getNotesByID({noteId}:NoteId){
     const response = await axios.get(`https://nowted-server.remotestate.com/notes/${noteId}`);
     return response.data;
 }
+
+
+
+export async function getFolders(){
+    const response = await axios.get(`https://nowted-server.remotestate.com/folders`)
+    return response.data;
+}
