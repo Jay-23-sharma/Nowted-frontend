@@ -1,6 +1,4 @@
 import CurrFoldersLogo from "../../assets/currentFolder-logo.png";
-import FoldersLogo from "../../assets/folder-logo.png";
-import AddFolder from "../../assets/addFolder-logo.png";
 import { useState, useEffect } from "react";
 import { getFolders } from "../services/noteAPI";
 import { NavLink } from "react-router-dom";
@@ -24,7 +22,7 @@ export function Folders() {
     fetchFolder();
   }, []);
   return (
-    <div className="sidebar bg-[rgba(24,24,24,1)] overflow-auto h-[30%]">
+    <div className="sidebar bg-[rgba(24,24,24,1)] overflow-auto h-[30%] [scrollbar-color:rgba(255,255,255,0.4)_rgba(24,24,24,1)]">
         
       <div className="folders ">
         <div className="folderList flex flex-col ">
