@@ -1,48 +1,20 @@
-import FavLogo from "../../assets/fav-logo.png"
-import ArchiveLogo from "../../assets/archive-logo.png"
-import TrashLogo from "../../assets/trash-logo.png"
-
+import { Favorites } from "./Utility/Favorites";
+import { DeletedNotes } from "./Utility/Delete";
+import { Archived } from "./Utility/Archive";
 
 export function Utility() {
   return (
-    <div className="sidebar bg-[rgba(24,24,24,1)]">
+    <div className="sidebar bg-[rgba(24,24,24,1)] pt-5">
       <div className="utility">
         <div className="utility w-full">
           <p className="text-gray-400 text-xs pb-3 pl-3">More</p>
 
-          <div className="utilityList flex flex-col gap-4">
-            <div className="r1  pl-3">
-              <a className="flex gap-2 items-center" href="">
-                <img
-                  className="w-4 h-4 justify-center"
-                  src={FavLogo}
-                  alt=""
-                />
-                <p className="text-white text-sm">Favourites</p>
-              </a>
-            </div>
+          <div className="utilityList flex flex-col">
+            <Favorites />
 
-            <div className="utility1  pl-3">
-              <a className="flex gap-2 items-center" href="">
-                <img
-                  className="w-4 h-4 justify-center"
-                  src={ArchiveLogo}
-                  alt=""
-                />
-                <p className="text-gray-400 text-sm">Archived</p>
-              </a>
-            </div>
+            <Archived />
 
-            <div className="utility1  pl-3">
-              <a className="flex gap-2 items-center" href="">
-                <img
-                  className="w-4 h-4 justify-center"
-                  src={TrashLogo}
-                  alt=""
-                />
-                <p className="text-gray-400 text-sm">Trash</p>
-              </a>
-            </div>
+            <DeletedNotes />
           </div>
         </div>
       </div>
