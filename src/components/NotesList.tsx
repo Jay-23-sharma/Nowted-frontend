@@ -119,7 +119,7 @@ export function NotesList() {
           notes.map((note) => (
             <NavLink
               key={note.id}
-              to={`notes/${note.id}`}
+              to={`/folder/${note.folderId}/notes/${note.id}`}
               className="list1 bg-[rgba(255,255,255,0.03)] flex flex-col p-2 gap-2 justify-center rounded-xs hover:bg-[rgba(255,255,255,0.1)]"
             >
               <p className="text-white pl-3 text-sm wrap-break-word">{note.title}</p>

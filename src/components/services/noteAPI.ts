@@ -82,6 +82,7 @@ export async function createFolder(name: string) {
 export async function updateNote(noteId: string, data: { folderId: string }) {
   const response = await axios.patch(
     `https://nowted-server.remotestate.com/notes/${noteId}`,
+    data
   );
   return response.data;
 }

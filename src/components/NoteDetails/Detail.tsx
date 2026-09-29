@@ -2,12 +2,19 @@ import DateLogo from "../../assets/calendar-logo.png";
 import CurrFolder from "../../assets/folder-logo.png";
 import { useState } from "react";
 
+type NoteFolder = {
+    id: string;
+    name:string;
+};
+
 type DetailProps = {
   date: string;
   folder: string;
+  folders: NoteFolder[];
+  onFolderChange:(folderId: string, folderName: string) => void;
 };
 
-export function Detail({ date, folder }: DetailProps) {
+export function Detail({ date, folder , folders, onFolderChange}: DetailProps) {
   const [folderMenu, setFolderMenu] = useState(false);
   return (
     <div className="details text-white flex flex-col pl-5 gap-5 pr-5">
@@ -38,7 +45,11 @@ export function Detail({ date, folder }: DetailProps) {
             >
               {folder}
             </button>
-            {folderMenu && <div className="bg-[rgba(255,255,255,0.03)] opacity-100 text-black w-40 h-100 absolute top-6 rounded-md overflow backdrop-blur-md"></div>}
+            {folderMenu && <div className="bg-[rgba(255,255,255,0.03)] opacity-100 text-black w-40 h-100 absolute top-6 rounded-md backdrop-blur-md text-white overflow-auto [scrollbar-color:rgba(255,255,255,0.4)_rgba(255,255,255,0.03)]">
+                    {folders.map((item)=>(
+                        <button key={item.id} onClick={()=> {onFolderChange(item.id,item.name); setFolderMenu(false)} } className="w-full text-left px-3 py-2 text-xs hover:bg-[rgba(255,255,255,0.1)]">{item.name}</button>
+                    ))}
+                </div>}
           </div>
         </div>
       </div>

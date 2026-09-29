@@ -2,10 +2,15 @@
 import { More } from "./More";
 import { Detail } from "./Detail";
 import { Content } from "./Content";
-import { getNotesByID } from "../services/noteAPI";
+import { getFolders, getNotesByID, updateNote } from "../services/noteAPI";
 import { useState,useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+
+type NoteFolder = {
+  name: string;
+  id: string;
+};
 
 export function NoteDetails() {
   type Note = {
@@ -21,6 +26,34 @@ export function NoteDetails() {
   const {noteId} = useParams();
   const [note,setNote] = useState<Note | null>(null)
   const [error,setError] = useState("");
+  const [folders,setFolders] = useState<NoteFolder[]>([]);
+
+
+  useEffect(()=>{
+    async function fetchFolders(){
+      try{
+        const data = await getFolders();
+        setFolders(data.folders);
+      }catch(e){
+        
+        console.log(e);
+      }
+    }
+    fetchFolders()
+  },[]);
+
+
+  async function handleFolderChange(folderId:string,
+    folderName:string){
+    if(!noteId) return;
+    try{
+      await updateNote(noteId,{folderId});
+      setNote((prev)=>prev?{...prev,folder:{id:folderId,name:folderName},}:prev);
+    }catch(e){
+      console.log(e);
+    }
+  }
+
   useEffect(()=>{
     async function fetchNote(){
       try{
@@ -48,7 +81,7 @@ export function NoteDetails() {
         {error && <p className="Error text-red-600 text-xl">{error}</p>}
         <More title={note.title}/>
 
-        <Detail date={note.createdAt} folder={note.folder.name}/>
+        <Detail date={note.createdAt} folder={note.folder.name} folders={folders} onFolderChange={handleFolderChange}/>
 
         <Content paragraph={note.content}/>
         
