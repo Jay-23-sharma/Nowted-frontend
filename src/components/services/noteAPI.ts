@@ -38,7 +38,7 @@ export async function getNoteList({
   deleted?: boolean;
   search?: string;
 }) {
-    console.log(search);
+  console.log(search);
   const response = await axios.get(
     "https://nowted-server.remotestate.com/notes",
     {
@@ -69,9 +69,19 @@ export async function createNote(note: {
   return response.data;
 }
 
-export async function createFolder(name:string){
-    const response = await axios.post("https://nowted-server.remotestate.com/folders",{
-        name,
-    });
-    return response.data;
+export async function createFolder(name: string) {
+  const response = await axios.post(
+    "https://nowted-server.remotestate.com/folders",
+    {
+      name,
+    },
+  );
+  return response.data;
+}
+
+export async function updateNote(noteId: string, data: { folderId: string }) {
+  const response = await axios.patch(
+    `https://nowted-server.remotestate.com/notes/${noteId}`,
+  );
+  return response.data;
 }

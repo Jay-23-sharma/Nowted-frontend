@@ -49,7 +49,7 @@ export function RecentNotes() {
                   src={CurrFileLogo}
                   alt=""
                 />
-                <p className="text-white text-sm">{note.title}</p>
+                <p className="text-white text-sm truncate">{note.title}</p>
               </NavLink>
             </div>
           ))}

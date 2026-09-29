@@ -102,7 +102,7 @@ export function NotesList() {
               : folderName}
       </h1>
 
-      <div className="flex flex-col pl-3 pr-3 gap-6">
+      <div className="flex flex-col pl-3 pr-3 gap-6 h-[50%]">
         {loading && (
           <p className="text-sm text-[rgba(255,255,255,0.6)]">Loading...</p>
         )}
@@ -120,9 +120,9 @@ export function NotesList() {
             <NavLink
               key={note.id}
               to={`notes/${note.id}`}
-              className="list1 bg-[rgba(255,255,255,0.03)] flex flex-col h-22 gap-2 justify-center rounded-xs hover:bg-[rgba(255,255,255,0.1)]"
+              className="list1 bg-[rgba(255,255,255,0.03)] flex flex-col p-2 gap-2 justify-center rounded-xs hover:bg-[rgba(255,255,255,0.1)]"
             >
-              <p className="text-white pl-3 text-sm">{note.title}</p>
+              <p className="text-white pl-3 text-sm wrap-break-word">{note.title}</p>
               <div className="shrink-0 flex gap-3 pl-3 pr-2">
                 <p className="text-[rgba(255,255,255,0.4)] text-[73%]">
                   {note.createdAt.slice(0, 10)}
