@@ -20,8 +20,6 @@ export function FolderProvider({ children }: { children: React.ReactNode }) {
   async function refreshFolders() {
     try {
       const response = await getFolders();
-      console.log("FOLDER API RESPONSE:", response);
-      console.log("FOLDERS:", response.folders);
       setFolders(response.folders);
     } catch (e) {
       if (axios.isAxiosError(e)) {

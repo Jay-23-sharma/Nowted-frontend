@@ -59,34 +59,24 @@ export function NotesList() {
           data = await getNoteList({
             search,
           });
-
-          console.log("SEARCH API CALLED:", search);
-          console.log("SEARCH RESULTS:", data.notes);
         } else if (favoritePage) {
           data = await getNoteList({
             favorite: true,
           });
-
-          console.log("FAVORITE NOTES:", data.notes);
         } else if (archivedPage) {
           data = await getNoteList({
             archived: true,
           });
-
-          console.log("ARCHIVED NOTES:", data.notes);
         } else if (deletedPage) {
           data = await getNoteList({
             deleted: true,
           });
 
-          console.log("DELETED NOTES:", data.notes);
+          
         } else if (folderId) {
           data = await getNoteList({
             folderId,
           });
-
-          console.log("FOLDER ID:", folderId);
-          console.log("NOTES FROM API:", data.notes);
         } else {
           if (!cancelled) {
             setNote([]);
@@ -105,10 +95,7 @@ export function NotesList() {
         if (cancelled) return;
 
         if (axios.isAxiosError(e)) {
-          setError(
-            e.response?.data?.message ||
-              "Something went wrong"
-          );
+          setError(e.response?.data?.message || "Something went wrong");
         } else {
           setError("Something went wrong");
         }
@@ -131,26 +118,14 @@ export function NotesList() {
       fetchNoteList();
     }
 
-    window.addEventListener(
-      "note-updated",
-      handleNoteUpdated
-    );
+    window.addEventListener("note-updated", handleNoteUpdated);
 
     return () => {
       cancelled = true;
 
-      window.removeEventListener(
-        "note-updated",
-        handleNoteUpdated
-      );
+      window.removeEventListener("note-updated", handleNoteUpdated);
     };
-  }, [
-    folderId,
-    favoritePage,
-    archivedPage,
-    deletedPage,
-    search,
-  ]);
+  }, [folderId, favoritePage, archivedPage, deletedPage, search]);
 
   let heading = folderName;
 
@@ -166,9 +141,7 @@ export function NotesList() {
 
   return (
     <div className="noteList bg-gray-200 dark:bg-[rgba(28,28,28,1)] w-[22%] overflow-auto dark:[scrollbar-color:rgba(255,255,255,0.4)_rgba(24,24,24,1)] [scrollbar-color:rgba(150,150,150,0.5)_rgba(245,245,245,1)]">
-      <h1 className="text-black dark:text-white p-3 pb-6">
-        {heading}
-      </h1>
+      <h1 className="text-black dark:text-white p-3 pb-6">{heading}</h1>
 
       <div className="flex flex-col pl-3 pr-3 gap-6 h-[50%]">
         {loading && !hasLoaded && (
@@ -179,23 +152,15 @@ export function NotesList() {
           </div>
         )}
 
-        {error && (
-          <p className="text-red-600 text-lg">
-            {error}
-          </p>
-        )}
+        {error && <p className="text-red-600 text-lg">{error}</p>}
 
-        {hasLoaded &&
-          notes.length === 0 &&
-          !error && (
-            <div className="flex justify-center items-center">
-              <p className="text-sm text-black dark:text-[rgba(255,255,255,0.6)]">
-                {search
-                  ? "No notes found"
-                  : "Folder is Empty"}
-              </p>
-            </div>
-          )}
+        {hasLoaded && notes.length === 0 && !error && (
+          <div className="flex justify-center items-center">
+            <p className="text-sm text-black dark:text-[rgba(255,255,255,0.6)]">
+              {search ? "No notes found" : "Folder is Empty"}
+            </p>
+          </div>
+        )}
 
         {!error &&
           notes.map((note) => {

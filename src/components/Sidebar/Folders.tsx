@@ -25,10 +25,7 @@ export function Folders({
   isCreatingFolder,
   setIsCreatingFolder,
 }: FoldersProps) {
-  console.log("folder component rendered")
   const { folders, refreshFolders } = useFolders();
-  console.log("folders from context:",folders)
-  console.log("FIRST FOLDER:", folders[0]);
   const [error, setError] = useState("");
   const [editingFolderId, setEditingFolderId] = useState<string | null>(null);
   const [editingFolderName, setEditingFolderName] = useState("");
