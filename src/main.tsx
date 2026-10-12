@@ -1,9 +1,16 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import App from './App.tsx'
+import { createRoot } from "react-dom/client";
+import App from "./App";
+import { ThemeProvider } from "./components/ThemeContext";
+import { FolderProvider } from "./components/FolderContext";
+import "./styles.css";
+import { StrictMode } from "react";
 
-createRoot(document.getElementById('root')!).render(
+createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <App />
+    <ThemeProvider>
+      <FolderProvider>
+        <App />
+      </FolderProvider>
+    </ThemeProvider>
   </StrictMode>,
-)
+);

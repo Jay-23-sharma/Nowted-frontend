@@ -79,10 +79,33 @@ export async function createFolder(name: string) {
   return response.data;
 }
 
-export async function updateNote(noteId: string, data: { folderId: string }) {
+export async function updateNote(noteId: string, data: { folderId?: string; title?:string; content?:string; isFavorite?:boolean; isArchived?:boolean }) {
   const response = await axios.patch(
     `https://nowted-server.remotestate.com/notes/${noteId}`,
     data
   );
   return response.data;
 }
+
+export async function deleteNote(noteId:string){
+    const response = await axios.delete(`https://nowted-server.remotestate.com/notes/${noteId}`);
+    return response.data;
+}
+
+export async function restoreNote({noteId}:NoteId){
+    const response = await axios.post(`https://nowted-server.remotestate.com/notes/${noteId}/restore`);
+    return response.data;
+}
+
+export async function editFolderName(folderId:string,folderName:string){
+    const response = await axios.patch(`https://nowted-server.remotestate.com/folders/${folderId}`,{
+        name:folderName
+    });
+    return response.data;
+}
+
+export async function deleteFolder(folderId:string){
+    const response = await axios.delete(`https://nowted-server.remotestate.com/folders/${folderId}`)
+    return response.data;
+}
+

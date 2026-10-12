@@ -4,7 +4,7 @@ import { Archived } from "./Utility/Archive";
 
 export function Utility() {
   return (
-    <div className="sidebar bg-[rgba(24,24,24,1)] pt-5">
+    <div className="sidebar bg-white dark:bg-[rgba(24,24,24,1)] pt-5 ">
       <div className="utility">
         <div className="utility w-full">
           <p className="text-gray-400 text-xs pb-3 pl-3">More</p>
