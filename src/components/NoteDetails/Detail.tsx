@@ -1,6 +1,6 @@
 import DateLogo from "../../assets/date-logo.svg";
 import CurrFolder from "../../assets/folder-logo.svg";
-import { useState } from "react";
+import { useState, useRef,useEffect } from "react";
 import { useFolders } from "../FolderContext";
 
 type DetailProps = {
@@ -9,13 +9,27 @@ type DetailProps = {
   onFolderChange: (folderId: string, folderName: string) => void;
 };
 
-export function Detail({
-  date,
-  folder,
-  onFolderChange,
-}: DetailProps) {
+export function Detail({ date, folder, onFolderChange }: DetailProps) {
   const [folderMenu, setFolderMenu] = useState(false);
   const { folders } = useFolders();
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
+        setFolderMenu(false);
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   return (
     <div className="details text-black dark:text-white flex flex-col pl-5 gap-5 pr-5">
@@ -53,7 +67,7 @@ export function Detail({
         </div>
 
         <div className="folderInfo">
-          <div className="relative flex flex-col">
+          <div ref={dropdownRef} className="relative flex flex-col">
             <button
               onClick={() => setFolderMenu(!folderMenu)}
               className="text-xs underline"

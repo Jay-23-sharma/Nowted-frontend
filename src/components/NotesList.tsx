@@ -71,8 +71,6 @@ export function NotesList() {
           data = await getNoteList({
             deleted: true,
           });
-
-          
         } else if (folderId) {
           data = await getNoteList({
             folderId,

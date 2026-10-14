@@ -35,9 +35,25 @@ export function More({
   const [openMenu, setMenu] = useState(false);
   const [editing, setEditing] = useState(false);
 
-  const titleTimer = useRef<ReturnType<
-    typeof setTimeout
-  > | null>(null);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+  const titleTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
+        setMenu(false);
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   useEffect(() => {
     return () => {
@@ -70,9 +86,7 @@ export function More({
       setIsFavorite(val);
 
       window.dispatchEvent(new Event("note-updated"));
-      window.dispatchEvent(
-        new Event("recent-notes-updated")
-      );
+      window.dispatchEvent(new Event("recent-notes-updated"));
 
       setMenu(false);
     } catch (e) {
@@ -91,9 +105,7 @@ export function More({
       setIsArchived(val);
 
       window.dispatchEvent(new Event("note-updated"));
-      window.dispatchEvent(
-        new Event("recent-notes-updated")
-      );
+      window.dispatchEvent(new Event("recent-notes-updated"));
 
       setMenu(false);
 
@@ -116,9 +128,7 @@ export function More({
       await deleteNote(noteId);
 
       window.dispatchEvent(new Event("note-updated"));
-      window.dispatchEvent(
-        new Event("recent-notes-updated")
-      );
+      window.dispatchEvent(new Event("recent-notes-updated"));
 
       setMenu(false);
 
@@ -142,9 +152,7 @@ export function More({
         <input
           autoFocus
           value={title}
-          onChange={(e) =>
-            handleTitleChange(e.target.value)
-          }
+          onChange={(e) => handleTitleChange(e.target.value)}
           onBlur={() => setEditing(false)}
           onKeyDown={(e) => {
             if (e.key === "Enter") {
@@ -154,15 +162,12 @@ export function More({
           className="bg-transparent outline-none text-black dark:text-white w-full"
         />
       ) : (
-        <p
-          onClick={() => setEditing(true)}
-          className="cursor-text"
-        >
+        <p onClick={() => setEditing(true)} className="cursor-text">
           {title}
         </p>
       )}
 
-      <div className="relative">
+      <div ref={dropdownRef} className="relative">
         <img
           className="invert dark:invert-0 cursor-pointer"
           onClick={() => setMenu(!openMenu)}
@@ -179,9 +184,7 @@ export function More({
               >
                 <div className="flex text-xs gap-3 items-center">
                   {isFavorite ? (
-                    <span className="text-yellow-500 text-2xl">
-                      ★
-                    </span>
+                    <span className="text-yellow-500 text-2xl">★</span>
                   ) : (
                     <img
                       className="w-4 h-4 invert dark:invert-0 group-hover:invert-0"
@@ -190,11 +193,7 @@ export function More({
                     />
                   )}
 
-                  <p>
-                    {isFavorite
-                      ? "Remove Favorites"
-                      : "Add to Favorites"}
-                  </p>
+                  <p>{isFavorite ? "Remove Favorites" : "Add to Favorites"}</p>
                 </div>
               </button>
 
@@ -209,9 +208,7 @@ export function More({
                     alt="archive icon"
                   />
 
-                  <p>
-                    {isArchived ? "UnArchive" : "Archived"}
-                  </p>
+                  <p>{isArchived ? "UnArchive" : "Archived"}</p>
                 </div>
               </button>
 
