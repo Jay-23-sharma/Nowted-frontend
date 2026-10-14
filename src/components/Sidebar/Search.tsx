@@ -16,7 +16,7 @@ export function Search() {
   const [warning, setWarning] = useState("");
   const [isSearching, setIsSearching] = useState(false);
   const [searchText, setSearchText] = useState(
-    searchParams.get("search") || ""
+    searchParams.get("search") || "",
   );
 
   useEffect(() => {
@@ -85,9 +85,7 @@ export function Search() {
           <div className="content-center">
             <button
               className="p-1 dark:bg-transparent rounded-sm"
-              onClick={() =>
-                setTheme(theme === "dark" ? "light" : "dark")
-              }
+              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
             >
               <img
                 className="w-fit"
@@ -140,9 +138,7 @@ export function Search() {
           </button>
         )}
 
-        {warning && (
-          <p className="text-red-400 text-xs mt-2">{warning}</p>
-        )}
+        {warning && <p className="text-red-400 text-xs mt-2">{warning}</p>}
       </div>
     </div>
   );

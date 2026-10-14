@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
@@ -23,9 +22,7 @@ export function RecentNotes() {
         setNotes(data.recentNotes);
       } catch (e) {
         if (axios.isAxiosError(e)) {
-          setError(
-            e.response?.data?.message || "Something went wrong"
-          );
+          setError(e.response?.data?.message || "Something went wrong");
         } else {
           setError("Something went wrong");
         }
@@ -45,9 +42,7 @@ export function RecentNotes() {
 
   return (
     <div className="overflow-auto">
-      {error && (
-        <p className="text-red-500 text-sm">{error}</p>
-      )}
+      {error && <p className="text-red-500 text-sm">{error}</p>}
 
       {notes.map((note) => (
         <NavLink

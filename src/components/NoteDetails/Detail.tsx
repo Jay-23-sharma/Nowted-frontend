@@ -1,6 +1,6 @@
 import DateLogo from "../../assets/date-logo.svg";
 import CurrFolder from "../../assets/folder-logo.svg";
-import { useState, useRef,useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useFolders } from "../FolderContext";
 
 type DetailProps = {

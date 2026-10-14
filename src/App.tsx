@@ -1,4 +1,3 @@
-
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Home } from "./components/Home/Home";
 import { NoteDetails } from "./components/NoteDetails/NoteDetail";
@@ -24,46 +23,28 @@ function App() {
                 }
               />
 
-              <Route
-                path="folder/:folderId"
-                element={<NotesLayout />}
-              >
+              <Route path="folder/:folderId" element={<NotesLayout />}>
                 <Route index element={<SelectNote />} />
-                <Route
-                  path="notes/:noteId"
-                  element={<NoteDetails />}
-                />
+                <Route path="notes/:noteId" element={<NoteDetails />} />
               </Route>
 
-              <Route
-                path="notes/:noteId"
-                element={<NotesLayout />}
-              >
+              <Route path="notes/:noteId" element={<NotesLayout />}>
                 <Route index element={<NoteDetails />} />
               </Route>
 
               <Route path="favorite" element={<NotesLayout />}>
                 <Route index element={<SelectNote />} />
-                <Route
-                  path="notes/:noteId"
-                  element={<NoteDetails />}
-                />
+                <Route path="notes/:noteId" element={<NoteDetails />} />
               </Route>
 
               <Route path="archive" element={<NotesLayout />}>
                 <Route index element={<SelectNote />} />
-                <Route
-                  path="notes/:noteId"
-                  element={<NoteDetails />}
-                />
+                <Route path="notes/:noteId" element={<NoteDetails />} />
               </Route>
 
               <Route path="delete" element={<NotesLayout />}>
                 <Route index element={<SelectNote />} />
-                <Route
-                  path="notes/:noteId"
-                  element={<RestorePage />}
-                />
+                <Route path="notes/:noteId" element={<RestorePage />} />
               </Route>
             </Route>
           </Routes>

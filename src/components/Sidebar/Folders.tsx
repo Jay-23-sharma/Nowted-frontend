@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { NavLink,useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import axios from "axios";
 import {
   createFolder,
@@ -87,7 +87,7 @@ export function Folders({
 
       await deleteFolder(folderId);
       await refreshFolders();
-      navigate("/")
+      navigate("/");
     } catch (e) {
       if (axios.isAxiosError(e)) {
         setError(e.response?.data?.message || "Something went wrong");

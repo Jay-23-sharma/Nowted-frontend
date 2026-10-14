@@ -32,22 +32,22 @@ export function Content({ content, setContent, onContentSave }: DetailContent) {
   }
 
   return (
-  <div className="content pl-5 pr-5 dark:text-white text-sm w-full h-135">
-    <textarea
-      ref={textareaRef}
-      className="w-full h-full bg-transparent outline-none resize-none placeholder:text-gray-400"
-      placeholder="Write here..."
-      value={content}
-      readOnly={!editing}
-      onClick={() => setEditing(true)}
-      onFocus={(e) => {
-        if (editing) {
-          const end = e.currentTarget.value.length;
-          e.currentTarget.setSelectionRange(end, end);
-        }
-      }}
-      onChange={(e) => handleContentChange(e.target.value)}
-    />
-  </div>
-);
+    <div className="content pl-5 pr-5 dark:text-white text-sm w-full h-135">
+      <textarea
+        ref={textareaRef}
+        className="w-full h-full bg-transparent outline-none resize-none placeholder:text-gray-400"
+        placeholder="Write here..."
+        value={content}
+        readOnly={!editing}
+        onClick={() => setEditing(true)}
+        onFocus={(e) => {
+          if (editing) {
+            const end = e.currentTarget.value.length;
+            e.currentTarget.setSelectionRange(end, end);
+          }
+        }}
+        onChange={(e) => handleContentChange(e.target.value)}
+      />
+    </div>
+  );
 }

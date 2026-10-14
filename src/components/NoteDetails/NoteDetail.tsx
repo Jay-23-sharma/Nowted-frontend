@@ -53,10 +53,7 @@ export function NoteDetails() {
         if (cancelled) return;
 
         if (axios.isAxiosError(e)) {
-          setError(
-            e.response?.data?.message ||
-              "Something went wrong"
-          );
+          setError(e.response?.data?.message || "Something went wrong");
         } else {
           setError("Something went wrong");
         }
@@ -86,10 +83,7 @@ export function NoteDetails() {
       window.dispatchEvent(new Event("recent-notes-updated"));
     } catch (e) {
       if (axios.isAxiosError(e)) {
-        setError(
-          e.response?.data?.message ||
-            "Something went wrong"
-        );
+        setError(e.response?.data?.message || "Something went wrong");
       } else {
         setError("Something went wrong");
       }
@@ -111,20 +105,14 @@ export function NoteDetails() {
       window.dispatchEvent(new Event("note-updated"));
     } catch (e) {
       if (axios.isAxiosError(e)) {
-        setError(
-          e.response?.data?.message ||
-            "Something went wrong"
-        );
+        setError(e.response?.data?.message || "Something went wrong");
       } else {
         setError("Something went wrong");
       }
     }
   }
 
-  async function handleFolderChange(
-    newFolderId: string,
-    _folderName: string
-  ) {
+  async function handleFolderChange(newFolderId: string, _folderName: string) {
     if (!noteId) return;
 
     try {
@@ -135,19 +123,14 @@ export function NoteDetails() {
       });
 
       window.dispatchEvent(new Event("note-updated"));
-      window.dispatchEvent(
-        new Event("recent-notes-updated")
-      );
+      window.dispatchEvent(new Event("recent-notes-updated"));
 
       navigate(`/folder/${newFolderId}`, {
         replace: true,
       });
     } catch (e) {
       if (axios.isAxiosError(e)) {
-        setError(
-          e.response?.data?.message ||
-            "Something went wrong"
-        );
+        setError(e.response?.data?.message || "Something went wrong");
       } else {
         setError("Something went wrong");
       }
@@ -173,11 +156,7 @@ export function NoteDetails() {
   return (
     <div className="noteDetails bg-white dark:bg-[rgba(24,24,24,1)] w-[60%] overflow-auto">
       <div className="flex flex-col gap-5">
-        {error && (
-          <p className="Error text-red-600 text-xl">
-            {error}
-          </p>
-        )}
+        {error && <p className="Error text-red-600 text-xl">{error}</p>}
 
         <More
           title={title}
