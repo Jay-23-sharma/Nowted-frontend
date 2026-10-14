@@ -178,6 +178,7 @@ export function NotesList() {
                 to={notePath}
                 className="list1 bg-white dark:bg-[rgba(255,255,255,0.03)] flex flex-col p-2 gap-2 justify-center rounded-sm hover:bg-gray-300 dark:hover:bg-[rgba(255,255,255,0.1)]"
               >
+                
                 <p className="dark:text-white text-black pl-3 text-sm wrap-break-word">
                   {note.title}
                 </p>
@@ -187,7 +188,7 @@ export function NotesList() {
                     {note.createdAt.slice(0, 10)}
                   </p>
 
-                  <p className="truncate min-w-0 dark:text-[rgba(255,255,255,0.6)] text-xs">
+                  <p className="truncate min-w-0 dark:text-[rgba(255,255,255,0.6)] text-xs w-[70%]">
                     {note.preview}
                   </p>
                 </div>
