@@ -76,7 +76,7 @@ export function Detail({ date, folder, onFolderChange }: DetailProps) {
             </button>
 
             {folderMenu && (
-              <div className="absolute top-6 left-0 z-50 w-40 max-h-100 overflow-auto rounded-md bg-gray-100 dark:bg-[rgba(51,51,51,1)] text-black dark:text-white shadow-lg [scrollbar-color:rgba(120,120,120,0.5)_rgba(245,245,245,1)] dark:[scrollbar-color:rgba(255,255,255,0.4)_rgba(51,51,51,1)]">
+              <div className="absolute top-6 left-0 z-50 w-40 max-h-100 overflow-auto rounded-md bg-gray-200 dark:bg-[rgba(51,51,51,1)] text-black dark:text-white shadow-lg [scrollbar-color:rgba(120,120,120,0.5)_rgba(245,245,245,1)] dark:[scrollbar-color:rgba(255,255,255,0.4)_rgba(51,51,51,1)]">
                 {folders.map((item) => (
                   <button
                     key={item.id}
