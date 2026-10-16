@@ -16,7 +16,7 @@ export function Content({ content, setContent, onContentSave }: DetailContent) {
       if (contentTimer.current) {
         clearTimeout(contentTimer.current);
       }
-    };
+    }; 
   }, []);
 
   function handleContentChange(value: string) {
